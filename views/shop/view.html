@@ -1,0 +1,105 @@
+<div class="wrapper" jqinit>
+    
+    <!-- TOP HEADER -->
+    <div ng-include src="'views/partials/header.html'"></div>
+    
+    <!-- NAV BAR -->
+    <div ng-include src="'views/partials/navbar.html'"></div>
+
+    <div class="section_container">
+        <section>
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0);">Home</a></li>
+
+                <li><a href="javascript:void(0);">Electronics</a></li>
+            </ul><!--PRODUCT DETAIL STARTS-->
+
+            <div id="product_detail">
+                <!--Product Left Starts-->
+
+                <div class="product_leftcol">
+                    <img ng-src="{{item.previews[0]}}">
+                    <ul class="pr_gallery">
+                        <li ng-repeat="preview in item.previews"><a href="javascript:void(0);" ng-click="current_preview = preview"><img ng-src="{{preview}}" width="100"></a></li>
+                    </ul>
+                </div><!--Product Left Ends--><!--Product Right Starts-->
+
+                <div class="product_rightcol">
+                    <small class="pr_type">{{item.category}}</small>
+
+                    <h1>{{item.name}}</h1>
+
+                    <p class="short_dc">{{item.description}}</p>
+
+                    <div class="pr_price">
+                        <big ng-show="item.price && !item.sale">${{item.price}}</big>
+                        <big ng-show="item.sale">${{item.sale}}</big>
+                        <small ng-show="item.sale">${{item.price}}</small>
+                    </div>
+
+                    <div class="size_info">
+                        <div class="color_sel">
+                            <label>Color :</label> <select ng-model="cart.cache.color">
+                                <option value="{{color}}">
+                                    {{color}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="qty_info">
+                        <div class="quantity">
+                            <label>Quantity :</label> 
+                            <select ng-model="cart.cache.qty">
+                                <option>
+                                    1
+                                </option>
+
+                                <option>
+                                    2
+                                </option>
+
+                                <option>
+                                    3
+                                </option>
+
+                                <option>
+                                    4
+                                </option>
+
+                                <option>
+                                    5
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="add_to_buttons">
+                        <button class="add_cart" ng-click="cart.actions.add(item)">Add to Cart</button>
+                    </div>
+
+                    <div class="product_overview">
+                        <h4>Quick Overview</h4>
+
+                        <ul>
+                            <li>{{point}}</li>
+                        </ul>
+                    </div>
+                </div><!--Product Right Ends-->
+            </div>
+
+             <!-- PRODUCTS LISTING -->
+            <div ng-include src="'views/partials/products.html'"></div>
+            <div ng-include src="'views/partials/products.html'"></div>
+
+            <!-- NEWSLETTER -->
+            <div ng-include src="'views/partials/newsletter.html'"></div>
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <div ng-include src="'views/partials/footer.html'"></div>
+</div>
+
+
+

@@ -1,0 +1,212 @@
+<div class="container" id="admin-add-products-page">
+	
+	<!-- Navigation -->
+	<div class="grid navigation-bar animated fadeInDown">
+		<div class="col-1-3 back-btn">
+			<a href="#/admin">
+				<i class="long left arrow icon"></i> Admin
+			</a>
+		</div>
+		<div class="col-1-3 center-heading">
+			<h1>Add Product</h1>
+		</div>
+		<div class="col-1-3 forward-btn">
+			<a href="#/">
+				Store <i class="long right arrow icon"></i>
+			</a>
+		</div>
+	</div>
+
+	<!-- Pages --> 
+	<div class="pages gutters">
+		<div class="page" ng-class="{'animated fadeInUp': !addpage || addpage === 1}" ng-show="!addpage || addpage === 1">
+			<div class="ui form breathing-room">
+				<div class="field ui input huge">
+					<input type="text" ng-model="admin.product.add.data.name" placeholder="Title of Product (e.g. Apple iPhone 5)" />
+				</div>
+				<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 2" ng-class="{'animated fadeInUp': admin.product.add.data.name.length >= 10, 'disabled' : !admin.product.add.data.name || admin.product.add.data.name.length <= 10}">Proceed</a>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 2}" ng-show="addpage === 2">
+			<div class="ui form breathing-room">
+				<div class="field ui input huge">
+					<textarea ng-model="admin.product.add.data.description" placeholder="Brief Description of Product (At least 64 characters)"></textarea>
+				</div>
+				<div class="navigation">
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 1">Back</a>
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 3" ng-class="{'animated fadeInUp': admin.product.add.data.description.length >= 64, 'disabled' : !admin.product.add.data.description || admin.product.add.data.description.length <= 64}">Proceed</a>
+				</div>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 3}" ng-show="addpage === 3">
+			<div class="ui form breathing-room">
+				<div class="field ui input huge">
+					<label>Price</label>
+					<input type="text" ng-model="admin.product.add.data.price" placeholder="(e.g 250.99)">
+					<small>(Do not include currency abbreviations)</small>
+				</div>
+				<div class="field ui input huge">
+					<label>Discounted/Sale Price</label>
+					<input type="text" ng-model="admin.product.add.data.sale" placeholder="(e.g. 199.99)">
+					<small>(Do not include currency abbreviations)</small>
+				</div>
+				<div class="field ui input huge">
+					<label>Quantity Limit <em>(leave blank if no limit)</em>:</label>
+					<input type="text" ng-model="admin.product.add.data.qty" placeholder="(e.g. 5)">
+					<small>(Limits the amount a customer can purchase per transaction)</small>
+				</div>
+				<div class="field ui input huge" id="select-colors">
+					<label>Available Color(s):</label>
+					<input type="text" ng-model="temp.color" placeholder="(e.g. Beige)">
+					<a href="javascript:void(0);" ng-click="admin.product.add.actions.addColor()" id="add-product-color-btn" class="ui basic small button"><i class="plus icon"></i> Add Color</a>
+				</div>
+				<div id="available-colors">
+					<strong ng-if="admin.product.add.data.colors.length > 0">Colors Added:</strong>
+					<div class="color" ng-repeat="color in admin.product.add.data.colors track by $index"><a href="javascript:void(0);" ng-click="admin.product.add.actions.removeColor($index)"><i class="close icon"></i></a>{{color}}</div>
+				</div>
+				<div class="navigation">
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 2">Back</a>
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 4" ng-class="{'animated fadeInUp': admin.product.add.data.description.length >= 64, 'disabled' : !admin.product.add.data.description || admin.product.add.data.description.length <= 64}">Proceed</a>
+				</div>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 4}" ng-show="addpage === 4">
+			<div class="ui form breathing-room">
+				
+				<div class="field ui input huge">
+					<label>Band Name:</label>
+					<input type="text" ng-model="admin.product.add.data.brand" placeholder="(e.g. Apple)">
+				</div>
+
+				<div class="field ui input huge">
+					<label>Category</label>
+					<div id="categories">
+						<div class="category">
+							<input type="radio" name="category" value="mobile" ng-model="admin.product.add.data.category">
+							<label>Mobile</label>
+						</div>
+						<div class="category">
+							<input type="radio" name="category" value="tablet" ng-model="admin.product.add.data.category">
+							<label>Tablet</label>
+						</div>
+						<div class="category">
+							<input type="radio" name="category" value="camera" ng-model="admin.product.add.data.category">
+							<label>Camera</label>
+						</div>
+						<div class="category">
+							<input type="radio" name="category" value="accessory" ng-model="admin.product.add.data.category">
+							<label>Accessory</label>
+						</div>
+						<div class="category">
+							<input type="radio" name="category" value="computer" ng-model="admin.product.add.data.category">
+							<label>Computer</label>
+						</div>
+					</div>				
+				</div>
+
+				<div class="field ui input huge" id="key-points-field">
+					<label>Key Point(s):</label>
+					<input type="text" ng-model="temp.keypoint" placeholder="(e.g. 3MP High Quality Carl Zeiss Lens)">
+					<a href="javascript:void(0);" ng-click="admin.product.add.actions.addKeyPoint()" id="add-product-keypoints-btn" class="ui basic small button"><i class="plus icon"></i> Add Key Point</a>
+				</div>
+				<div id="key-points">
+					<strong ng-if="admin.product.add.data.keypoints.length > 0">Key Points Added:</strong>
+					<div class="key-point" ng-repeat="keypoint in admin.product.add.data.keypoints track by $index"><a href="javascript:void(0);" ng-click="admin.product.add.actions.removeKeyPoint($index)"><i class="close icon"></i></a>{{keypoint}}</div>
+				</div>
+
+				<div class="navigation">
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 3">Back</a>
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 5">Proceed</a>
+				</div>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 5}" ng-show="addpage === 5">
+			<div id="dropbox" filedrop>
+				<span class="message">Drop files here to upload <br /><i>(they will only be visible to you)</i></span>
+			</div>
+			<div class="ui form breathing-room">
+				<div class="navigation">
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 4">Back</a>
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 6" ng-class="{disabled: media.length === 0}">Proceed</a>
+				</div>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 6}" ng-show="addpage === 6">
+			<div class="ui form breathing-room">
+				<div id="product-preview"> 
+					<div class="ui segment">
+						<div class="attribute">
+							<span>{{admin.product.add.data.name}}</span>
+						</div>
+						<a href="javascrip:void(0);" class="ui tiny black button" ng-click="addpage = 1">Edit</a>
+					</div>
+					<div class="ui segment">
+						<div class="attribute">
+							<p>{{admin.product.add.data.description}}</p>
+						</div>
+						<a href="javascrip:void(0);" class="ui tiny black button" ng-click="addpage = 2">Edit</a>
+					</div>
+					<div class="ui segment">
+						<div class="attribute">
+							<strong>Price:</strong>
+							<span>{{admin.product.add.data.price}}</span>
+						</div>
+						<div class="attribute">
+							<strong>Sale Price:</strong>
+							<span>{{admin.product.add.data.sale}}</span>
+						</div>
+						<div class="attribute">
+							<strong>Quantity Limit:</strong>
+							<span>{{admin.product.add.data.qty}}</span>
+						</div>
+						<div class="attribute">
+							<strong>Available Colors:</strong>
+							<ul>
+								<li ng-repeat="data in admin.product.add.data.colors track by $index">{{data}}</li>
+							</ul>
+						</div>
+						<a href="javascrip:void(0);" class="ui tiny black button" ng-click="addpage = 3">Edit</a>
+					</div>
+					<div class="ui segment">
+						<div class="attribute">
+							<strong>Category:</strong>
+							<span>{{admin.product.add.data.category}}</span>
+						</div>
+						<div class="attribute">
+							<strong>Key Points:</strong>
+							<ul>
+								<li ng-repeat="data in admin.product.add.data.keypoints track by $index">{{data}}</li>
+							</ul>
+						</div>
+						<a href="javascrip:void(0);" class="ui tiny black button" ng-click="addpage = 4">Edit</a>
+					</div>
+					<div class="ui segment">
+						<div class="previews">
+							<div class="preview" ng-repeat="file in media">
+								<img ng-src="{{file}}">
+							</div>
+						</div>
+						<a href="javascrip:void(0);" class="ui tiny black button" ng-click="addpage = 5">Add More</a>
+					</div>
+				</div>
+
+				<div class="navigation">
+					<a href="javascript:void(0);" class="ui black small button" ng-click="addpage = 5">Back</a>
+					<a href="javascript:void(0);" class="ui black small button" ng-click="admin.product.add.actions.post()">Proceed</a>
+				</div>
+			</div>
+		</div>
+		<div class="page" ng-class="{'animated fadeInUp': addpage === 7}" ng-show="addpage === 7">
+			<div class="ui form breathing-room">
+				
+				<h1>Product has been posted!</h1>
+
+				<div class="navigation">
+					<!-- 
+					<a href="javascript:void(0);" class="ui black small button">Preview</a>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,130 @@
+<div class="wrapper" jqinit>
+    
+    <!-- TOP HEADER -->
+    <div ng-include src="'views/partials/header.html'"></div>
+    
+    <!-- NAV BAR -->
+    <div ng-include src="'views/partials/navbar.html'"></div>
+    
+    <!-- MID SECTION -->
+    <div class="section_container">
+        <!--Mid Section Starts-->
+        <section>
+
+            <!--SIDE NAV STARTS-->
+            <div id="side_nav">
+                <div class="sideNavCategories">
+                    <h1>Shop Your Way</h1>
+                    <ul class="category departments"> 
+                        <li class="header">Categories</li>
+                        <li ng-repeat="(k,v) in categories" ng-class="{active: filters.category === v.name}"  ng-click="setFilter('category', v.name)"><a href="javascript:void(0);">{{v.label}}</a></li>
+                    </ul>
+                    <ul class="category departments">
+                        <li class="header">Brands</li>
+                        <li ng-repeat="brand in branding" ng-class="{active: filters.brand === brand.name}" ng-click="setFilter('brand',brand.name)"><a href="javascript:void(0);">{{brand.name}}</a></li>
+                    </ul>
+                    <ul class="category departments">
+                        <li class="header">Price</li>
+                        <li ng-class="{active: filters.range === '50-199'}"><a href="javascript:void(0);" ng-click="setFilter('range','50-199')">$50 to $199</a></li>
+                        <li ng-class="{active: filters.range === '200-299'}"><a href="javascript:void(0);" ng-click="setFilter('range','200-299')">$200 to $299</a></li>
+                        <li ng-class="{active: filters.range === '300-499'}"><a href="javascript:void(0);" ng-click="setFilter('range','300-499')">$300 to $499</a></li>
+                        <li ng-class="{active: filters.range === '500-10000'}"><a href="javascript:void(0);" ng-click="setFilter('range','500-10000')">$500 and $10000</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <!--SIDE NAV ENDS-->
+            <!--MAIN CONTENT STARTS-->
+            <div id="main_content">
+
+                <div class="category_banner"> <img src="images/promo_cat_banner.jpg"/> </div>
+                
+
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#/">Electronics</a></li>
+                </ul>
+
+
+
+                <!--Toolbar-->
+                <div class="toolbar">
+                    <div class="show_no">
+                        <label>Show :</label>
+                        <select ng-model="sorts.show">
+                            <option value="5">5 ITEMS</option>
+                            <option value="10">10 ITEMS</option>
+                            <option value="20">20 ITEMS</option>
+                            <option value="50">50 ITEMS</option>
+                            <option value="75">75 ITEMS</option>
+                            <option value="100">100 ITEMS</option>
+                        </select>
+                    </div>
+                </div>
+                <!--Toolbar-->
+
+
+                <!--Product List Starts-->
+                <div class="products_list products_slider">
+                    <ul ng-show="productsFound.length > 0">
+                        <li ng-repeat="product in productsFound" ng-show="$index < sorts.show"> 
+                            <a class="product_image"  href="#/product/{{product.item_id}}">
+                                <img ng-src="{{product.previews[0]}}"/></a>
+                            <div class="product_info">
+                                <h3><a href="#/product/{{product.item_id}}">{{product.name}}</a></h3>
+                                <small>{{product.description | characters:140}}</small> 
+                            </div>
+                            <div class="price_info"> 
+                                <a href="#">+ Add to wishlist</a>
+                                <button class="price_add" title="" type="button"><span class="pr_price">${{product.price}}</span><span class="pr_add">Add to Cart</span></button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ui message" ng-show="productsFound.length === 0">
+                          <div class="header">
+                                No Products were found anywhere
+                          </div>
+                          <p>
+                            You pretty much broke the internet. <strong>GREAT JOB PAL!</strong>
+                          </p>
+                    </div>
+                </div>
+
+
+
+
+                <!--Product List Ends-->
+                <!--Toolbar-->
+                <div class="toolbar">
+                    <div class="show_no">
+                        <label>Show :</label>
+                        <select ng-model="sorts.show">
+                            <option value="5">5 ITEMS</option>
+                            <option value="10">10 ITEMS</option>
+                            <option value="20">20 ITEMS</option>
+                            <option value="50">50 ITEMS</option>
+                            <option value="75">75 ITEMS</option>
+                            <option value="100">100 ITEMS</option>
+                        </select>
+                    </div>
+                </div>
+                <!--Toolbar-->
+            </div>
+            <!--MAIN CONTENT ENDS-->
+            <!--Newsletter_subscribe Starts-->
+            <div class="subscribe_block">
+                <div class="find_us">
+                    <h3>Find us on</h3>
+                    <a class="twitter" href="#"></a> <a class="facebook" href="#"></a> <a class="rss" href="#"></a> </div>
+            </div>
+            <!--Newsletter_subscribe Ends-->
+        </section>
+        <!--Mid Section Ends-->
+    </div>
+
+    <!-- FOOTER -->
+    <div ng-include src="'views/partials/footer.html'"></div>
+
+</div>

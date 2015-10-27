@@ -1,0 +1,41 @@
+<div class="container" id="admin-add-products-page">
+	
+	<!-- Navigation -->
+	<div class="grid navigation-bar animated fadeInDown">
+		<div class="col-1-3 back-btn">
+			<a href="#/admin">
+				<i class="long left arrow icon"></i> Admin
+			</a>
+		</div>
+		<div class="col-1-3 center-heading">
+			<h1>Edit Product</h1>
+		</div>
+		<div class="col-1-3 forward-btn">
+			<a href="#/">
+				Store <i class="long right arrow icon"></i>
+			</a>
+		</div>
+	</div>
+
+	<!-- Pages --> 
+	<div class="content gutters small breathing-room">
+		<div class="products animated rollIn">
+			<div class="ui items">
+			  <div class="item" ng-repeat="product in products.list">
+			    <div class="content">
+			      <div class="name">{{product.name}}</div>
+			      <p class="description">{{product.description | characters:140}}</p>
+			      <div ng-if="product.previews && product.previews.length > 0 && product.previews[0]"class="image">
+				      	<img ng-src="{{product.previews[0]}}">
+				    </div>
+			       <a href="#/admin/products/edit/{{product.item_id}}" class="ui blue button">Edit</a>
+			    </div>
+			  </div>
+			</div>
+		
+		</div>
+	</div>
+
+
+
+</div>

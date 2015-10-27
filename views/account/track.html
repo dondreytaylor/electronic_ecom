@@ -1,0 +1,83 @@
+<div class="wrapper" jqinit>
+    
+    <!-- TOP HEADER -->
+    <div ng-include src="'views/partials/header.html'"></div>
+    
+    <!-- NAV BAR -->
+    <div ng-include src="'views/partials/navbar.html'"></div>
+
+    <!-- MID SECTIONS -->
+    <div class="section_container">
+        <section>
+
+            <div ng-show="!tracking.results">
+                <div class="form-list wide-container">
+                    <div>
+                        <h3>Track Your Package</h3>
+                        <p>Provide us with the tracking number you received after placing your order.</p>
+                    </div>
+                    <div>
+                        <label>Tracking Number</label>
+                        <input type="text" placeholder="(e.g. 1ZXXXXXXXX)" ng-model="tracking.number">
+                    </div>
+                    <div class="button_actions">
+                        <button ng-click="tracking.actions.track()">Track Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-list wide-container list-container" ng-show="tracking.results">
+                <h3>Order Tracking Status</h3>
+                <div>
+                    <strong>Tracking Number:</strong>
+                    <span>{{tracking.number}}</span>
+                </div>
+                <div>
+                    <strong>Order:</strong>
+                    <span>Your order has not yet been shipped</span>
+                </div>
+                <div>
+                    <strong>Expected Arrival Time:</strong>
+                    <span>{{tracking.results.ArrivalTime}}</span>
+                </div>
+                <div>
+                    <strong>Expected Departure Time:</strong>
+                    <span>{{tracking.results.DepartureTime}}</span>
+                </div>
+                <div>
+                    <strong>Starting Airport:</strong>
+                    <span>{{tracking.results.FromAirports}}</span>
+                </div>
+                <div>
+                    <strong>Destination Airport:</strong>
+                    <span>{{tracking.results.ToAirports}}</span>
+                </div>
+                <div>
+                    <strong>Flight ID:</strong>
+                    <span>{{tracking.results.FlightID}}</span>
+                </div>
+                <div>
+                    <strong>Cargo Count:</strong>
+                    <span>{{tracking.results.CargoBeingCarried}}</span>
+                </div>
+                <div>
+                    <strong>Flight Activity Status:</strong>
+                    <span>{{tracking.results.Active}}</span>
+                </div>
+                <div>
+                    <strong>Tail Number:</strong>
+                    <span>{{tracking.results.TailNumber}}</span>
+                </div>
+                <div class="button_actions">
+                    <button ng-click="tracking.actions.reset()">Back</button>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <div ng-include src="'views/partials/footer.html'"></div>
+</div>
+

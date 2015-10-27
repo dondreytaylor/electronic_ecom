@@ -1,0 +1,59 @@
+<div class="wrapper" jqinit>
+    
+    <!-- TOP HEADER -->
+    <div ng-include src="'views/partials/header.html'"></div>
+    
+    <!-- NAV BAR -->
+    <div ng-include src="'views/partials/navbar.html'"></div>
+    
+
+    <!-- MID SECTION -->
+    <div class="section_container animated fadeInUp">
+        <section>
+           
+            <!-- BANNER -->
+            <div id="banner_section">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li> 
+                            <img src="images/lm_banner_1.jpg" />
+                            <!--
+                            <div class="flex-caption">
+                                <h3>Explore the summer collection!</h3>
+                            </div>
+                            -->
+                        </li>
+                        <li> 
+                            <img src="images/lm_banner_2.jpg" />
+                            <!--
+                            <div class="flex-caption">
+                                <h3>Shop now!</h3>
+                            </div> 
+                            -->
+                        </li>
+                        <li> 
+                            <img src="images/lm_banner_3.jpg" /> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="promo_banner">
+                    <div class="home_banner"><a href="#/shop"><img src="images/promo_hb_1.jpg"></a></div>
+                    <div class="home_banner"><a href="#/shop"><img src="images/promo_hb_2.jpg"></a></div>
+                    <div class="home_banner"><a href="#/shop"><img src="images/promo_hb_1.jpg"></a></div>
+                </div>
+            </div>
+           
+            <!-- PRODUCTS LISTING -->
+            <div ng-include src="'views/partials/products.html'"></div>
+            <div ng-include src="'views/partials/products.html'"></div>
+
+            <!-- NEWSLETTER -->
+            <div ng-include src="'views/partials/newsletter.html'"></div>
+
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <div ng-include src="'views/partials/footer.html'"></div>
+
+</div>

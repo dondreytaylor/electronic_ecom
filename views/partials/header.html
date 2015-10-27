@@ -1,0 +1,24 @@
+<!-- HEADER -->
+<div class="header_container">
+    <header>
+        <div class="top_bar clear">
+            <ul class="top_links">
+                <li><a href="#/shop">Shop</a></li>
+                <li><a href="#/comingsoon/myaccount">My Account</a></li>
+                <li><a href="#/comingsoon/login">Login</a></li>
+                <li class="highlight" href="#/login"><a href="#/signup">Sign Up</a></li>
+            </ul>
+        </div>
+        <div class="responsive-nav" style="display:none;">
+            <select  onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
+                <option selected="" value="">Navigate...</option>
+                <option value="#/"> Home</option>
+                <option value="#/"> Shop</option>
+                <option value="#/shop"> -  Listing Page</option>
+                <option value="#/comingsoon/checkout"> -  Shopping Cart</option>
+                <option value="#/comingsoon/checkout"> -  Checkout</option>
+                <option value="#/comingsoon/contact">Contact</option>
+            </select>
+        </div>
+    </header>
+</div>

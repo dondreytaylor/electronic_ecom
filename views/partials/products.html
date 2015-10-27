@@ -1,0 +1,19 @@
+<!-- PRODUCTS -->
+<div class="products_list products_slider">
+    <h2 class="sub_title">Offer Products</h2>
+    <ul>
+        <li ng-repeat="product in products.list"> 
+            <a class="product_image" href="#/product/{{product.item_id}}">
+                <img ng-show="product.previews" ng-src="{{product.previews[0]}}"/>
+            </a>
+            <div class="product_info">
+                <h3><a href="javascript:void(0);">{{product.name}}</a></h3>
+                <small>{{product.description | characters:140}}</small> 
+            </div>
+            <div class="price_info"> 
+                <button ng-click="cart.actions.add(product)" class="price_add" title="" type="button"><span class="pr_price">${{product.price}}</span><span class="pr_add">Add</span></button>
+            </div>
+        </li>
+       
+    </ul>
+</div>

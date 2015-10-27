@@ -1,0 +1,452 @@
+<div class="wrapper" jqinit>
+    
+    <!-- TOP HEADER -->
+    <div ng-include src="'views/partials/header.html'"></div>
+    
+    <!-- NAV BAR -->
+    <div ng-include src="'views/partials/navbar.html'"></div>
+
+    <div class="section_container">
+        <section>
+           
+
+           <div class="full_page">
+                
+                <h1>Checkout</h1>
+                
+                <!--CHECKOUT STEPS STARTS-->
+                <div class="checkout_steps">
+                   
+                    <ol id="checkoutSteps">
+                        
+                        <!-- STEP 1 -->
+                        <li class="section" id="opc-login" ng-class="{'allow active' : checkout.option === 1 || !checkout.option}">
+                            <div class="step-title"> <span class="number">1</span>
+                                <h2>Checkout Method</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 1 || !checkout.option}" ng-show="checkout.option === 1 || !checkout.option">
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <h3>Checkout as a Guest or Register</h3>
+                                        <p>Register with us for future convenience:</p>
+                                        <ul class="form-list">
+                                            <li class="control">
+                                                <input ng-model="order.user" value="guest" type="radio" class="radio" value="guest" id="login:guest" name="checkout_method">
+                                                <label>Checkout as Guest</label>
+                                            </li>
+                                            <li class="control">
+                                                <input ng-model="order.user" value="new" type="radio" class="radio" value="register" id="login:register" name="checkout_method">
+                                                <label>Register</label>
+                                            </li>
+                                        </ul>
+                                        <h4>Register and save time!</h4>
+                                        <p>Register with us for future convenience:</p>
+                                        <ul class="ul">
+                                            <li>Fast and easy check out</li>
+                                            <li>Easy access to your order history and status</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-2">
+                                        <h3>Login</h3>
+                                        <form method="post" id="login-form">
+                                            <fieldset>
+                                                <h4>Already registered?</h4>
+                                                <p>Please log in below:</p>
+                                                <ul class="form-list">
+                                                    <li>
+                                                        <label class="required" for="login-email"><em>*</em>Email Address</label>
+                                                        <div class="input-box">
+                                                            <input type="text" value="" ng-model="User.email" class="input-text">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <label class="required" for="login-password"><em>*</em>Password</label>
+                                                        <div class="input-box">
+                                                            <input type="password" ng-model="User.password" class="input-text">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <br/>
+                                                <br/>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 2" class="button brown_btn" type="button">Continue</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 2" class="button brown_btn" type="button">Login</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- STEP 2 -->
+                        <li class="section" id="opc-billing" ng-class="{'allow active' : checkout.option === 2}">
+                            <div class="step-title"> <span class="number">2</span>
+                                <h2>Billing Information</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 2}" ng-show="checkout.option === 2">
+                                <div class="col2-set">
+                                    <div class="col-2">
+                                        <ul class="form-list">
+                                            <li>
+                                                <label class="required"><em>*</em> Card Type</label>
+                                                <div class="input-box">
+                                                    <select ng-model="order.billing.card.type">
+                                                        <option value="Visa">Visa</option>
+                                                        <option value="Mastercard">Mastercard</option>
+                                                        <option value="American Express">American Express</option>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> Card Number</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.card.number"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> Card Expiration Date</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.card.expires"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> First Name</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.firstname" class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> Last Name</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.lastname"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> City</label>
+                                                <div class="input-box">
+                                                    <input type="text"  ng-model="order.billing.city"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em> State</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.state"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label>Zip Code</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.billing.zipcode"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label>Country</label>
+                                                <div class="input-boxtext">
+                                                    <input type="text" value="U.S. ONLY" disabled=disabled class="input-text">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <br><br>
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 1" class="button brown_btn" type="button">Back</button>
+                                            <button ng-click="checkout.option = 3" class="button brown_btn" type="button">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- STEP 3 -->
+                        <li class="section" id="opc-shipping" ng-class="{'allow active' : checkout.option === 3}">
+                            <div class="step-title"> <span class="number">3</span>
+                                <h2>Shipping Information</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 3}" ng-show="checkout.option === 3">
+                                <div class="col2-set">
+                                    <div class="col-2">
+                                        <ul class="form-list">
+                                            <li>
+                                                <input style='width:auto' type="checkbox" value="1" ng-model="order.shippingSameAsBilling">
+                                                <label>Shipping same as Billing</label>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em>First Name</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.shipping.firstname" class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em>Last Name</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.shipping.lastname"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em>City</label>
+                                                <div class="input-box">
+                                                    <input type="text"  ng-model="order.shipping.city"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><em>*</em>State</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.shipping.state"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label>Zip Code</label>
+                                                <div class="input-box">
+                                                    <input type="text" ng-model="order.shipping.zipcode"  class="input-text">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label>Country</label>
+                                                <div class="input-boxtext">
+                                                    <input type="text" value="U.S. ONLY" disabled=disabled  class="input-text">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        
+                                        <br><br>
+
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 2" class="button brown_btn" type="button">Back</button>
+                                            <button ng-click="checkout.option = 4" class="button brown_btn" type="button">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- STEP 4 -->
+                        <li class="section" id="opc-shipping-method" ng-class="{'allow active' : checkout.option === 4}">
+                            <div class="step-title"> <span class="number">4</span>
+                                <h2>Shipping Method</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 4}" ng-show="checkout.option === 4">
+                                <div class="col2-set">
+                                    <div class="col-2">
+                                        <h3>Method of Shipping</h3>
+                                        <p>Select from the list below of available shipping options:</p>
+                                        <ul class="form-list">
+                                            <li>
+                                                <input style='width:auto' type="radio" ng-model="order.shipping.method" value="1" class="input-text">
+                                                <label>Next Day Air</label>
+                                            </li>
+                                        </ul>
+                                        
+                                        <br><br>
+
+                                        <h3>Nearest Airports to <strong>{{order.billing.city}}</strong></h3>
+                                        <p>Select a airport to ship your order on:</p>
+                                        <table class="form-list">
+                                           <tr>
+                                                <th></th>
+                                                <th>Airport Code</th>
+                                                <th>Airport</th>
+                                            </tr>
+                                            <tr ng-repeat="airport in order.airports">
+                                                <td>
+                                                    <input type="radio" value="{{airport.code}}" ng-model="order.selected.toAirport">
+                                                </td>
+                                                <td>{{airport.code}}</td>
+                                                <td>{{airport.city}}</td>
+                                            </tr>
+                                        </table>
+                                        <div class="no-message" ng-show="order.airports.length === 0">
+                                            <strong>No available airports could be found</strong>
+                                        </div>
+
+                                        <br><br>
+
+                                        <h3 ng-show="order.selected.toAirport">Nearest Flight to <strong>{{order.billing.city}}</strong></h3>
+                                        <p ng-show="order.selected.toAirport">Select a flight to ship your order on:</p>
+                                        <table  ng-show="order.selected.toAirport" class="form-list">
+                                            <tr>
+                                                <th></th>
+                                                <th>Route</th>
+                                                <th>Flight ID</th>
+                                                <th>Arrival Time</th>
+                                                <th>Active Flight</th>
+                                            </tr>
+                                            <tr ng-repeat="flight in order.flights">
+                                                <td>
+                                                    <input type="radio" value="{{flight.FlightID}}" ng-model="order.selected.flightid">
+                                                </td>
+                                                <td>{{order.selected.fromAirport}} -> {{order.selected.toAirport}}</td>
+                                                <td>{{flight.FlightID}}</td>
+                                                <td>{{flight.ArrivalTime}}</td>
+                                                <td>{{flight.Active}}</td>
+                                            </tr>
+                                        </table>
+                                        <div class="no-message" ng-show="order.selected.toAirport && order.flights.length === 0">
+                                            <strong>No available flights could be found</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <br><br>
+                                        
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 3" class="button brown_btn" type="button">Back</button>
+                                            <button ng-click="checkout.option = 5" class="button brown_btn" type="button">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- STEP 5 -->
+                        <li class="section" id="opc-order-preview" ng-class="{'allow active' : checkout.option === 5}">
+                            <div class="step-title"> <span class="number">5</span>
+                                <h2>Order Preview</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 5}" ng-show="checkout.option === 5">
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <h3>Shipping</h3>
+                                        <div>
+                                            <strong>First Name:</strong>
+                                            <span>{{order.shipping.firstname}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Last Name:</strong>
+                                            <span>{{order.shipping.lastname}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>City:</strong>
+                                            <span>{{order.shipping.city}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>State:</strong>
+                                            <span>{{order.shipping.state}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Zip Code:</strong>
+                                            <span>{{order.shipping.zipcode}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <h3>Billing</h3>
+                                        <div>
+                                            <strong>Card Type:</strong>
+                                            <span>{{order.billing.card.type}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Card to Charge:</strong>
+                                            <span>{{order.actions.hideCardNumber(order.billing.card.number)}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Expires on:</strong>
+                                            <span>{{order.billing.card.expires}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>First Name:</strong>
+                                            <span>{{order.billing.firstname}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Last Name:</strong>
+                                            <span>{{order.billing.lastname}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>City:</strong>
+                                            <span>{{order.billing.city}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>State:</strong>
+                                            <span>{{order.billing.state}}</span>
+                                        </div>
+                                        <div>
+                                            <strong>Zip Code:</strong>
+                                            <span>{{order.billing.zipcode}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <div class="buttons-set">
+                                            <button ng-click="checkout.option = 4" class="button brown_btn" type="button">Back</button>
+                                            <button ng-click="checkout.actions.submit()" class="button brown_btn" type="button">Place Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- STEP 6 -->
+                        <li class="section" id="opc-order-confirmation" ng-class="{'allow active' : checkout.option === 6}">
+                            <div class="step-title"> <span class="number">6</span>
+                                <h2>Order Confirmation</h2>
+                            </div>
+                            <div class="checkout-step" ng-class="{'animated fadeIn' : checkout.option === 6}" ng-show="checkout.option === 6">
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <h3>You order has been placed! (ORDER NUMBER: {{order.number}})</h3>
+                                        <p>Track your order using the following tracking number <strong>{{order.tracking.number}}</strong></p>
+                                    </div>
+                                </div>
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <div class="buttons-set">
+                                            <a href="#/shop">Shop some more</a>
+                                            <br><br>
+                                            <a href="#/track">Track Order</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+
+                <!--CHECKOUT STEPS ENDS-->
+                <div class="col_right">
+                    <div class="block-progress">
+                        <div class="block-title">Your Checkout Progress</div>
+                            <ul>
+                                <li ng-class="{current: checkout.option == 1, done: checkout.option > 1}">Billing Address</li>
+                                <li ng-class="{current: checkout.option == 2, done: checkout.option > 2}">Shipping Address</li>
+                                <li ng-class="{current: checkout.option == 3, done: checkout.option > 3}">Shipping Method</li>
+                                <li ng-class="{current: checkout.option == 4, done: checkout.option > 4}">Payment Method</li>
+                            </ul>
+                          </div>
+                    </div>
+                    <div class="right_promo">
+                    </div>
+                </div>
+            </div>
+       
+
+
+
+
+        
+
+        </section>
+    </div>
+    
+    <!-- FOOTER -->
+    <div ng-include src="'views/partials/footer.html'"></div>
+</div>
+
+
+

@@ -1,0 +1,43 @@
+<div class="navigation_container">
+    <!--Navigation Starts-->
+    <nav>
+        <ul class="primary_nav">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/shop">Shop</a></li>
+            <li ng-repeat="category in categories" ng-show="$index < 5">
+                <a href="#/shop/category/{{category.name}}">{{category.label}}</a>
+                <ul class="sub_menu">
+                    <li ng-repeat="(k,v) in branding" ng-if="isCategoryInBrand(k,category.name)" ng-show="$index < 5"> 
+                        <a  href="#/shop/brand/{{k}}">{{k}}</a>
+                        <ul>
+                            <li ng-repeat="product in v.products" ng-show="$index < 5"><a  href="#/product/{{product.item_id}}">{{product.name}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="minicart"> 
+            <a href="#" class="minicart_link" > 
+                <span class="item"><b>{{cart.actions.getItemCount()}}</b> ITEM /</span> <span class="price"><b>${{cart.actions.getTotal()}}</b></span>
+            </a>
+            <div class="cart_drop"> 
+                <span class="darw"></span>
+                <ul ng-show="cart.actions.getItemCount() > 0">
+                    <li ng-repeat="cart_item in cart.items">
+                    <img ng-src="{{cart_item.previews[0]}}">
+                        <a href="#/product/{{cart_item.item_id}}">{{cart_item.title}}</a> 
+                        <span class="price" ng-show="cart_item.price && !cart_item.sale">${{cart_item.price}}</span>
+                        <span class="price" ng-show="cart_item.sale">${{cart_item.sale}}</span>
+                        <span>x {{cart_item.qty}}</span>
+                    </li>
+                    <div class="cart_bottom">
+                        <div class="subtotal_menu"><small>Subtotal:</small><big>${{cart.actions.getTotal()}}</big></div>
+                        <a href="#/cart">Checkout</a>
+                    </div>
+                </ul>
+                <span id="no-items-message" ng-show="cart.actions.getItemCount() === 0">You have no items in your cart</span>
+            </div>
+        </div>
+    </nav>
+    <!--Navigation Ends-->
+</div>
